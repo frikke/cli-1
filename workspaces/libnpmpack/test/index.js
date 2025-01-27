@@ -5,8 +5,9 @@ const t = require('tap')
 const tspawk = require('./fixtures/tspawk.js')
 const spawk = tspawk(t)
 
-const fs = require('fs')
-const path = require('path')
+const fs = require('node:fs')
+const path = require('node:path')
+const { resolve } = require('node:path')
 const pack = require('../lib/index.js')
 const tnock = require('./fixtures/tnock.js')
 
@@ -15,11 +16,6 @@ const OPTS = {
 }
 
 const REG = OPTS.registry
-
-// TODO this ... smells.  npm "script-shell" config mentions defaults but those
-// are handled by run-script, not npm.  So for now we have to tie tests to some
-// pretty specific internals of runScript
-const makeSpawnArgs = require('@npmcli/run-script/lib/make-spawn-args.js')
 
 t.test('packs from local directory', async t => {
   const testDir = t.testdir({
@@ -138,6 +134,19 @@ t.test('packs from registry spec', async t => {
   t.ok(tarball)
 })
 
+t.test('packs from git spec', async t => {
+  const spec = 'test/test#111111aaaaaaaabbbbbbbbccccccdddddddeeeee'
+  const pkgPath = resolve(__dirname, 'fixtures/git-test.tgz')
+
+  const srv = tnock(t, 'https://codeload.github.com')
+  srv.get('/test/test/tar.gz/111111aaaaaaaabbbbbbbbccccccdddddddeeeee')
+    .times(2)
+    .reply(200, fs.readFileSync(pkgPath))
+
+  const tarball = await pack(spec, { ...OPTS })
+  t.ok(tarball)
+})
+
 t.test('runs scripts in foreground when foregroundScripts === true', async t => {
   const testDir = t.testdir({
     'package.json': JSON.stringify({
@@ -152,13 +161,15 @@ t.test('runs scripts in foreground when foregroundScripts === true', async t => 
   const cwd = process.cwd()
   process.chdir(testDir)
 
-  const [scriptShell, scriptArgs] = makeSpawnArgs({
-    event: 'prepack',
-    path: testDir,
-    cmd: 'touch prepack',
-  })
+  const shell = process.platform === 'win32'
+    ? process.env.COMSPEC
+    : 'sh'
 
-  const prepack = spawk.spawn(scriptShell, scriptArgs)
+  const args = process.platform === 'win32'
+    ? ['/d', '/s', '/c', 'touch prepack']
+    : ['-c', 'touch prepack']
+
+  const prepack = spawk.spawn(shell, args)
 
   await pack('file:.', {
     packDestination: testDir,
@@ -186,13 +197,7 @@ t.test('doesn\'t run scripts when ignoreScripts === true', async t => {
   const cwd = process.cwd()
   process.chdir(testDir)
 
-  const [scriptShell, scriptArgs] = makeSpawnArgs({
-    event: 'prepack',
-    path: testDir,
-    cmd: 'touch prepack',
-  })
-
-  const prepack = spawk.spawn(scriptShell, scriptArgs)
+  const prepack = spawk.spawn('sh', ['-c', 'touch prepack'])
 
   await pack('file:.', {
     packDestination: testDir,

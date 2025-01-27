@@ -19,12 +19,31 @@ const readHtml = (path) => fs.readFile(path, 'utf-8')
 const readYaml = (path) => fs.readFile(path, 'utf-8').then(yaml.parse)
 const makeTransforms = (...args) => (src, trs) => trs.reduce((acc, tr) => tr(acc, ...args), src)
 
+const pAll = async (obj) => {
+  const entries = Object.entries(obj)
+  const results = await Promise.all(entries.map(e => e[1]))
+  return results.reduce((acc, res, index) => {
+    acc[entries[index][0]] = res
+    return acc
+  }, {})
+}
+
 const run = async ({ content, template, nav, man, html, md }) => {
-  const [contentPaths, templateFile, navFile] = await Promise.all([
+  await rmAll(man, html, md)
+  const [contentPaths, navFile, options] = await Promise.all([
     readDocs(content),
-    readHtml(template),
     readYaml(nav),
-    rmAll(man, html, md),
+    pAll({
+      template: readHtml(template),
+      // these deps are esm only so we have to import them once we
+      // are inside our main async function
+      unified: import('unified').then(r => r.unified),
+      remarkParse: import('remark-parse').then(r => r.default),
+      remarkGfm: import('remark-gfm').then(r => r.default),
+      remarkRehype: import('remark-rehype').then(r => r.default),
+      rehypeStringify: import('rehype-stringify').then(r => r.default),
+      remarkMan: import('remark-man').then(r => r.default),
+    }),
   ])
 
   const sources = await Promise.all(contentPaths.map(async (childPath) => {
@@ -61,7 +80,7 @@ const run = async ({ content, template, nav, man, html, md }) => {
         github_path: 'docs/content',
       },
       frontmatter,
-      template: templateFile,
+      ...options,
     })
 
     const transformedSrc = applyTransforms(body, [
@@ -74,35 +93,45 @@ const run = async ({ content, template, nav, man, html, md }) => {
         : []),
     ])
 
+    const aliases = [
+      fullName === 'configuring-npm/package-json' && 'configuring-npm/npm-json',
+      fullName === 'configuring-npm/folders' && 'configuring-npm/npm-global',
+    ].filter(Boolean)
+
     if (data.section) {
-      const manSrc = applyTransforms(transformedSrc, [
+      const manSource = applyTransforms(transformedSrc, [
         transform.helpLinks,
         transform.man,
       ])
-      const manPaths = [
-        name,
-        fullName === 'configuring-npm/package-json' && 'npm-json',
-        fullName === 'configuring-npm/folders' && 'npm-global',
-      ].filter(Boolean).map(p => applyTransforms(p, [transform.manPath]))
-
-      acc.man.push(...manPaths.map((manPath) => ({
-        path: manPath,
-        fullPath: join(man, manPath),
-        src: manSrc,
-      })))
+      // Man page aliases are only the basename since the man pages have no hierarchy
+      acc.man.push(...[name, ...aliases.map(a => basename(a))]
+        .map((p) => applyTransforms(p, [transform.manPath]))
+        .map((manPath) => ({
+          path: manPath,
+          fullPath: join(man, manPath),
+          src: manSource,
+        }))
+      )
     }
 
-    acc.html.push({
-      path: `${fullName}.html`,
-      fullPath: join(html, `${fullName}.html`),
-      src: applyTransforms(transformedSrc, [transform.html]),
-    })
+    // html docs are used for npm help on Windows
+    const htmlSource = applyTransforms(transformedSrc, [transform.html])
+    acc.html.push(...[fullName, ...aliases].map((htmlPath) => ({
+      path: `${htmlPath}.html`,
+      fullPath: join(html, `${htmlPath}.html`),
+      src: htmlSource,
+    })))
 
+    // Markdown pages don't get aliases here. These are used to build the website so any redirects
+    // for these pages are applied in npm/documentation. Not ideal but there are also many more
+    // redirects that we would never apply to man or html docs pages
+    const mdSource = applyTransforms(transformedSrc, [transform.md])
     acc.md.push({
       path: childPath,
       fullPath: join(md, childPath),
-      src: applyTransforms(transformedSrc, [transform.md]),
+      src: mdSource,
     })
+
     return acc
   }, { man: [], html: [], md: [] })
 

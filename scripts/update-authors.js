@@ -1,9 +1,10 @@
-const { join } = require('path')
-const { CWD, run, git, fs } = require('./util.js')
+const { join } = require('node:path')
+const { CWD, run, git, fs, EOL } = require('./util.js')
 
 const main = async () => {
   const allAuthors = await git('log', '--use-mailmap', '--reverse', '--format=%aN <%aE>', {
     lines: true,
+    quiet: true,
   })
 
   const authors = new Set()
@@ -20,7 +21,7 @@ const main = async () => {
   return fs.writeFile(join(CWD, 'AUTHORS'), [
     `# Authors sorted by whether or not they're me`,
     ...authors,
-  ].join('\n'))
+  ].join(EOL))
 }
 
 run(main)

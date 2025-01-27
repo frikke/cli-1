@@ -1,13 +1,11 @@
 // TODO: set the scope config from package.json or explicit cli config
-const walkUp = require('walk-up-path')
+const { walkUp } = require('walk-up-path')
 const ini = require('ini')
 const nopt = require('nopt')
-const mapWorkspaces = require('@npmcli/map-workspaces')
-const rpj = require('read-package-json-fast')
-const log = require('proc-log')
+const { log, time } = require('proc-log')
 
-const { resolve, dirname, join } = require('path')
-const { homedir } = require('os')
+const { resolve, dirname, join } = require('node:path')
+const { homedir } = require('node:os')
 const {
   readFile,
   writeFile,
@@ -15,39 +13,24 @@ const {
   unlink,
   stat,
   mkdir,
-} = require('fs/promises')
+} = require('node:fs/promises')
+
+const fileExists = (...p) => stat(resolve(...p))
+  .then((st) => st.isFile())
+  .catch(() => false)
+
+const dirExists = (...p) => stat(resolve(...p))
+  .then((st) => st.isDirectory())
+  .catch(() => false)
 
 const hasOwnProperty = (obj, key) =>
   Object.prototype.hasOwnProperty.call(obj, key)
-
-// define a custom getter, but turn into a normal prop
-// if we set it.  otherwise it can't be set on child objects
-const settableGetter = (obj, key, get) => {
-  Object.defineProperty(obj, key, {
-    get,
-    set (value) {
-      Object.defineProperty(obj, key, {
-        value,
-        configurable: true,
-        writable: true,
-        enumerable: true,
-      })
-    },
-    configurable: true,
-    enumerable: true,
-  })
-}
 
 const typeDefs = require('./type-defs.js')
 const nerfDart = require('./nerf-dart.js')
 const envReplace = require('./env-replace.js')
 const parseField = require('./parse-field.js')
-const typeDescription = require('./type-description.js')
 const setEnvs = require('./set-envs.js')
-
-const {
-  ErrInvalidAuth,
-} = require('./errors.js')
 
 // types that can be saved back to
 const confFileTypes = new Set([
@@ -64,16 +47,12 @@ const confTypes = new Set([
   'cli',
 ])
 
-const _loaded = Symbol('loaded')
-const _get = Symbol('get')
-const _find = Symbol('find')
-const _loadObject = Symbol('loadObject')
-const _loadFile = Symbol('loadFile')
-const _checkDeprecated = Symbol('checkDeprecated')
-const _flatten = Symbol('flatten')
-const _flatOptions = Symbol('flatOptions')
-
 class Config {
+  #loaded = false
+  #flatten
+  // populated the first time we flatten the object
+  #flatOptions = null
+
   static get typeDefs () {
     return typeDefs
   }
@@ -90,6 +69,7 @@ class Config {
     platform = process.platform,
     execPath = process.execPath,
     cwd = process.cwd(),
+    excludeNpmCwd = false,
   }) {
     // turn the definitions into nopt's weirdo syntax
     this.definitions = definitions
@@ -104,23 +84,24 @@ class Config {
       }
     }
 
-    // populated the first time we flatten the object
-    this[_flatOptions] = null
-    this[_flatten] = flatten
+    this.#flatten = flatten
     this.types = types
     this.shorthands = shorthands
     this.defaults = defaults
 
     this.npmPath = npmPath
+    this.npmBin = join(this.npmPath, 'bin/npm-cli.js')
     this.argv = argv
     this.env = env
     this.execPath = execPath
     this.platform = platform
     this.cwd = cwd
+    this.excludeNpmCwd = excludeNpmCwd
 
     // set when we load configs
     this.globalPrefix = null
     this.localPrefix = null
+    this.localPackage = null
 
     // defaults to env.HOME, but will always be *something*
     this.home = null
@@ -148,15 +129,15 @@ class Config {
     }
     Object.freeze(this.list)
 
-    this[_loaded] = false
+    this.#loaded = false
   }
 
   get loaded () {
-    return this[_loaded]
+    return this.#loaded
   }
 
   get prefix () {
-    return this[_get]('global') ? this.globalPrefix : this.localPrefix
+    return this.#get('global') ? this.globalPrefix : this.localPrefix
   }
 
   // return the location where key is found.
@@ -164,10 +145,7 @@ class Config {
     if (!this.loaded) {
       throw new Error('call config.load() before reading values')
     }
-    return this[_find](key)
-  }
 
-  [_find] (key) {
     // have to look in reverse order
     const entries = [...this.data.entries()]
     for (let i = entries.length - 1; i > -1; i--) {
@@ -183,12 +161,12 @@ class Config {
     if (!this.loaded) {
       throw new Error('call config.load() before reading values')
     }
-    return this[_get](key, where)
+    return this.#get(key, where)
   }
 
   // we need to get values sometimes, so use this internal one to do so
   // while in the process of loading.
-  [_get] (key, where = null) {
+  #get (key, where = null) {
     if (where !== null && !confTypes.has(where)) {
       throw new Error('invalid config location param: ' + where)
     }
@@ -203,32 +181,37 @@ class Config {
     if (!confTypes.has(where)) {
       throw new Error('invalid config location param: ' + where)
     }
-    this[_checkDeprecated](key)
-    const { data } = this.data.get(where)
+    this.#checkDeprecated(key)
+    const { data, raw } = this.data.get(where)
     data[key] = val
+    if (['global', 'user', 'project'].includes(where)) {
+      raw[key] = val
+    }
 
     // this is now dirty, the next call to this.valid will have to check it
     this.data.get(where)[_valid] = null
 
     // the flat options are invalidated, regenerate next time they're needed
-    this[_flatOptions] = null
+    this.#flatOptions = null
   }
 
   get flat () {
-    if (this[_flatOptions]) {
-      return this[_flatOptions]
+    if (this.#flatOptions) {
+      return this.#flatOptions
     }
 
     // create the object for flat options passed to deps
-    process.emit('time', 'config:load:flatten')
-    this[_flatOptions] = {}
+    const timeEnd = time.start('config:load:flatten')
+    this.#flatOptions = {}
     // walk from least priority to highest
     for (const { data } of this.data.values()) {
-      this[_flatten](data, this[_flatOptions])
+      this.#flatten(data, this.#flatOptions)
     }
-    process.emit('timeEnd', 'config:load:flatten')
+    this.#flatOptions.nodeBin = this.execPath
+    this.#flatOptions.npmBin = this.npmBin
+    timeEnd()
 
-    return this[_flatOptions]
+    return this.#flatOptions
   }
 
   delete (key, where = 'cli') {
@@ -238,7 +221,11 @@ class Config {
     if (!confTypes.has(where)) {
       throw new Error('invalid config location param: ' + where)
     }
-    delete this.data.get(where).data[key]
+    const { data, raw } = this.data.get(where)
+    delete data[key]
+    if (['global', 'user', 'project'].includes(where)) {
+      delete raw[key]
+    }
   }
 
   async load () {
@@ -246,80 +233,79 @@ class Config {
       throw new Error('attempting to load npm config multiple times')
     }
 
-    process.emit('time', 'config:load')
     // first load the defaults, which sets the global prefix
-    process.emit('time', 'config:load:defaults')
     this.loadDefaults()
-    process.emit('timeEnd', 'config:load:defaults')
 
     // next load the builtin config, as this sets new effective defaults
-    process.emit('time', 'config:load:builtin')
     await this.loadBuiltinConfig()
-    process.emit('timeEnd', 'config:load:builtin')
 
     // cli and env are not async, and can set the prefix, relevant to project
-    process.emit('time', 'config:load:cli')
     this.loadCLI()
-    process.emit('timeEnd', 'config:load:cli')
-    process.emit('time', 'config:load:env')
     this.loadEnv()
-    process.emit('timeEnd', 'config:load:env')
 
     // next project config, which can affect userconfig location
-    process.emit('time', 'config:load:project')
     await this.loadProjectConfig()
-    process.emit('timeEnd', 'config:load:project')
+
     // then user config, which can affect globalconfig location
-    process.emit('time', 'config:load:user')
     await this.loadUserConfig()
-    process.emit('timeEnd', 'config:load:user')
+
     // last but not least, global config file
-    process.emit('time', 'config:load:global')
     await this.loadGlobalConfig()
-    process.emit('timeEnd', 'config:load:global')
 
     // set this before calling setEnvs, so that we don't have to share
-    // symbols, as that module also does a bunch of get operations
-    this[_loaded] = true
+    // private attributes, as that module also does a bunch of get operations
+    this.#loaded = true
 
     // set proper globalPrefix now that everything is loaded
     this.globalPrefix = this.get('prefix')
 
-    process.emit('time', 'config:load:setEnvs')
     this.setEnvs()
-    process.emit('timeEnd', 'config:load:setEnvs')
-
-    process.emit('timeEnd', 'config:load')
   }
 
   loadDefaults () {
     this.loadGlobalPrefix()
     this.loadHome()
 
-    this[_loadObject]({
+    const defaultsObject = {
       ...this.defaults,
       prefix: this.globalPrefix,
-    }, 'default', 'default values')
+    }
+
+    try {
+      defaultsObject['npm-version'] = require(join(this.npmPath, 'package.json')).version
+    } catch {
+      // in some weird state where the passed in npmPath does not have a package.json
+      // this will never happen in npm, but is guarded here in case this is consumed
+      // in other ways + tests
+    }
+
+    this.#loadObject(defaultsObject, 'default', 'default values')
 
     const { data } = this.data.get('default')
-
-    // the metrics-registry defaults to the current resolved value of
-    // the registry, unless overridden somewhere else.
-    settableGetter(data, 'metrics-registry', () => this[_get]('registry'))
 
     // if the prefix is set on cli, env, or userconfig, then we need to
     // default the globalconfig file to that location, instead of the default
     // global prefix.  It's weird that `npm get globalconfig --prefix=/foo`
     // returns `/foo/etc/npmrc`, but better to not change it at this point.
-    settableGetter(data, 'globalconfig', () =>
-      resolve(this[_get]('prefix'), 'etc/npmrc'))
+    // define a custom getter, but turn into a normal prop
+    // if we set it.  otherwise it can't be set on child objects
+    Object.defineProperty(data, 'globalconfig', {
+      get: () => resolve(this.#get('prefix'), 'etc/npmrc'),
+      set (value) {
+        Object.defineProperty(data, 'globalconfig', {
+          value,
+          configurable: true,
+          writable: true,
+          enumerable: true,
+        })
+      },
+      configurable: true,
+      enumerable: true,
+    })
   }
 
   loadHome () {
-    if (this.env.HOME) {
-      return this.home = this.env.HOME
-    }
-    this.home = homedir()
+    this.home = this.env.HOME || homedir()
   }
 
   loadGlobalPrefix () {
@@ -330,7 +316,7 @@ class Config {
     if (this.env.PREFIX) {
       this.globalPrefix = this.env.PREFIX
     } else if (this.platform === 'win32') {
-    // c:\node\node.exe --> prefix=c:\node\
+      // c:\node\node.exe --> prefix=c:\node\
       this.globalPrefix = dirname(this.execPath)
     } else {
       // /usr/local/bin/node --> prefix=/usr/local
@@ -356,7 +342,7 @@ class Config {
       }
       conf[key] = envVal
     }
-    this[_loadObject](conf, 'env', 'environment')
+    this.#loadObject(conf, 'env', 'environment')
   }
 
   loadCLI () {
@@ -366,7 +352,7 @@ class Config {
     nopt.invalidHandler = null
     this.parsedArgv = conf.argv
     delete conf.argv
-    this[_loadObject](conf, 'cli', 'command line options')
+    this.#loadObject(conf, 'cli', 'command line options')
   }
 
   get valid () {
@@ -430,6 +416,7 @@ class Config {
       }
 
       if (authProblems.length) {
+        const { ErrInvalidAuth } = require('./errors.js')
         throw new ErrInvalidAuth(authProblems)
       }
 
@@ -441,7 +428,7 @@ class Config {
       nopt.invalidHandler = (k, val, type) =>
         this.invalidHandler(k, val, type, obj.source, where)
 
-      nopt.clean(obj.data, this.types, this.typeDefs)
+      nopt.clean(obj.data, this.types, typeDefs)
 
       nopt.invalidHandler = null
       return obj[_valid]
@@ -475,8 +462,9 @@ class Config {
       if (problem.action === 'delete') {
         this.delete(problem.key, problem.where)
       } else if (problem.action === 'rename') {
-        const old = this.get(problem.from, problem.where)
-        this.set(problem.to, old, problem.where)
+        const raw = this.data.get(problem.where).raw?.[problem.from]
+        const calculated = this.get(problem.from, problem.where)
+        this.set(problem.to, raw || calculated, problem.where)
         this.delete(problem.from, problem.where)
       }
     }
@@ -497,6 +485,7 @@ class Config {
   }
 
   invalidHandler (k, val, type, source, where) {
+    const typeDescription = require('./type-description.js')
     log.warn(
       'invalid config',
       k + '=' + JSON.stringify(val),
@@ -518,22 +507,30 @@ class Config {
     }
 
     const typeDesc = typeDescription(type)
-    const oneOrMore = typeDesc.indexOf(Array) !== -1
     const mustBe = typeDesc
       .filter(m => m !== undefined && m !== Array)
-    const oneOf = mustBe.length === 1 && oneOrMore ? ' one or more'
-      : mustBe.length > 1 && oneOrMore ? ' one or more of:'
-      : mustBe.length > 1 ? ' one of:'
-      : ''
-    const msg = 'Must be' + oneOf
+    const msg = 'Must be' + this.#getOneOfKeywords(mustBe, typeDesc)
     const desc = mustBe.length === 1 ? mustBe[0]
-      : mustBe.filter(m => m !== Array)
-        .map(n => typeof n === 'string' ? n : JSON.stringify(n))
-        .join(', ')
+      : [...new Set(mustBe.map(n => typeof n === 'string' ? n : JSON.stringify(n)))].join(', ')
     log.warn('invalid config', msg, desc)
   }
 
-  [_loadObject] (obj, where, source, er = null) {
+  #getOneOfKeywords (mustBe, typeDesc) {
+    let keyword
+    if (mustBe.length === 1 && typeDesc.includes(Array)) {
+      keyword = ' one or more'
+    } else if (mustBe.length > 1 && typeDesc.includes(Array)) {
+      keyword = ' one or more of:'
+    } else if (mustBe.length > 1) {
+      keyword = ' one of:'
+    } else {
+      keyword = ''
+    }
+    return keyword
+  }
+
+  #loadObject (obj, where, source, er = null) {
+    // obj is the raw data read from the file
     const conf = this.data.get(where)
     if (conf.source) {
       const m = `double-loading "${where}" configs from ${source}, ` +
@@ -560,14 +557,21 @@ class Config {
         const k = envReplace(key, this.env)
         const v = this.parseField(value, k)
         if (where !== 'default') {
-          this[_checkDeprecated](k, where, obj, [key, value])
+          this.#checkDeprecated(k)
+          if (this.definitions[key]?.exclusive) {
+            for (const exclusive of this.definitions[key].exclusive) {
+              if (!this.isDefault(exclusive)) {
+                throw new TypeError(`--${key} can not be provided when using --${exclusive}`)
+              }
+            }
+          }
         }
         conf.data[k] = v
       }
     }
   }
 
-  [_checkDeprecated] (key, where, obj, kv) {
+  #checkDeprecated (key) {
     // XXX(npm9+) make this throw an error
     if (this.deprecated[key]) {
       log.warn('config', key, this.deprecated[key])
@@ -579,18 +583,25 @@ class Config {
     return parseField(f, key, this, listElement)
   }
 
-  async [_loadFile] (file, type) {
-    process.emit('time', 'config:load:file:' + file)
+  async #loadFile (file, type) {
     // only catch the error from readFile, not from the loadObject call
+    log.silly('config', `load:file:${file}`)
     await readFile(file, 'utf8').then(
-      data => this[_loadObject](ini.parse(data), type, file),
-      er => this[_loadObject](null, type, file, er)
+      data => {
+        const parsedConfig = ini.parse(data)
+        if (type === 'project' && parsedConfig.prefix) {
+          // Log error if prefix is mentioned in project .npmrc
+          /* eslint-disable-next-line max-len */
+          log.error('config', `prefix cannot be changed from project config: ${file}.`)
+        }
+        return this.#loadObject(parsedConfig, type, file)
+      },
+      er => this.#loadObject(null, type, file, er)
     )
-    process.emit('timeEnd', 'config:load:file:' + file)
   }
 
   loadBuiltinConfig () {
-    return this[_loadFile](resolve(this.npmPath, 'npmrc'), 'builtin')
+    return this.#loadFile(resolve(this.npmPath, 'npmrc'), 'builtin')
   }
 
   async loadProjectConfig () {
@@ -599,7 +610,13 @@ class Config {
     // we return to make sure localPrefix is set
     await this.loadLocalPrefix()
 
-    if (this[_get]('global') === true || this[_get]('location') === 'global') {
+    // if we have not detected a local package json yet, try now that we
+    // have a local prefix
+    if (this.localPackage == null) {
+      this.localPackage = await fileExists(this.localPrefix, 'package.json')
+    }
+
+    if (this.#get('global') === true || this.#get('location') === 'global') {
       this.data.get('project').source = '(global mode enabled, ignored)'
       this.sources.set(this.data.get('project').source, 'project')
       return
@@ -611,8 +628,8 @@ class Config {
     // up loading the "project" config where the "userconfig" will be,
     // which causes some calamaties.  So, we only load project config if
     // it doesn't match what the userconfig will be.
-    if (projectFile !== this[_get]('userconfig')) {
-      return this[_loadFile](projectFile, 'project')
+    if (projectFile !== this.#get('userconfig')) {
+      return this.#loadFile(projectFile, 'project')
     } else {
       this.data.get('project').source = '(same as "user" config, ignored)'
       this.sources.set(this.data.get('project').source, 'project')
@@ -620,26 +637,27 @@ class Config {
   }
 
   async loadLocalPrefix () {
-    const cliPrefix = this[_get]('prefix', 'cli')
+    const cliPrefix = this.#get('prefix', 'cli')
     if (cliPrefix) {
       this.localPrefix = cliPrefix
       return
     }
 
-    const cliWorkspaces = this[_get]('workspaces', 'cli')
-    const isGlobal = this[_get]('global') || this[_get]('location') === 'global'
+    const cliWorkspaces = this.#get('workspaces', 'cli')
+    const isGlobal = this.#get('global') || this.#get('location') === 'global'
 
     for (const p of walkUp(this.cwd)) {
-      const hasNodeModules = await stat(resolve(p, 'node_modules'))
-        .then((st) => st.isDirectory())
-        .catch(() => false)
+      // HACK: this is an option set in tests to stop the local prefix from being set
+      // on tests that are created inside the npm repo
+      if (this.excludeNpmCwd && p === this.npmPath) {
+        break
+      }
 
-      const hasPackageJson = await stat(resolve(p, 'package.json'))
-        .then((st) => st.isFile())
-        .catch(() => false)
+      const hasPackageJson = await fileExists(p, 'package.json')
 
-      if (!this.localPrefix && (hasNodeModules || hasPackageJson)) {
+      if (!this.localPrefix && (hasPackageJson || await dirExists(p, 'node_modules'))) {
         this.localPrefix = p
+        this.localPackage = hasPackageJson
 
         // if workspaces are disabled, or we're in global mode, return now
         if (cliWorkspaces === false || isGlobal) {
@@ -651,31 +669,30 @@ class Config {
       }
 
       if (this.localPrefix && hasPackageJson) {
+        const pkgJson = require('@npmcli/package-json')
         // if we already set localPrefix but this dir has a package.json
         // then we need to see if `p` is a workspace root by reading its package.json
         // however, if reading it fails then we should just move on
-        const pkg = await rpj(resolve(p, 'package.json')).catch(() => false)
-        if (!pkg) {
+        const { content: pkg } = await pkgJson.normalize(p).catch(() => ({ content: {} }))
+        if (!pkg?.workspaces) {
           continue
         }
 
+        const mapWorkspaces = require('@npmcli/map-workspaces')
         const workspaces = await mapWorkspaces({ cwd: p, pkg })
         for (const w of workspaces.values()) {
           if (w === this.localPrefix) {
             // see if there's a .npmrc file in the workspace, if so log a warning
-            const hasNpmrc = await stat(resolve(this.localPrefix, '.npmrc'))
-              .then((st) => st.isFile())
-              .catch(() => false)
-
-            if (hasNpmrc) {
-              log.warn(`ignoring workspace config at ${this.localPrefix}/.npmrc`)
+            if (await fileExists(this.localPrefix, '.npmrc')) {
+              log.warn('config', `ignoring workspace config at ${this.localPrefix}/.npmrc`)
             }
 
             // set the workspace in the default layer, which allows it to be overridden easily
             const { data } = this.data.get('default')
             data.workspace = [this.localPrefix]
             this.localPrefix = p
-            log.info(`found workspace root at ${this.localPrefix}`)
+            this.localPackage = hasPackageJson
+            log.info('config', `found workspace root at ${this.localPrefix}`)
             // we found a root, so we return now
             return
           }
@@ -689,11 +706,11 @@ class Config {
   }
 
   loadUserConfig () {
-    return this[_loadFile](this[_get]('userconfig'), 'user')
+    return this.#loadFile(this.#get('userconfig'), 'user')
   }
 
   loadGlobalConfig () {
-    return this[_loadFile](this[_get]('globalconfig'), 'global')
+    return this.#loadFile(this.#get('globalconfig'), 'global')
   }
 
   async save (where) {
@@ -705,7 +722,6 @@ class Config {
     }
 
     const conf = this.data.get(where)
-    conf[_raw] = { ...conf.data }
     conf[_loadError] = null
 
     if (where === 'user') {
@@ -718,10 +734,12 @@ class Config {
       }
     }
 
-    const iniData = ini.stringify(conf.data).trim() + '\n'
+    // We need the actual raw data before we called parseField so that we are
+    // saving the same content back to the file
+    const iniData = ini.stringify(conf.raw).trim() + '\n'
     if (!iniData.trim()) {
       // ignore the unlink error (eg, if file doesn't exist)
-      await unlink(conf.source).catch(er => {})
+      await unlink(conf.source).catch(() => {})
       return
     }
     const dir = dirname(conf.source)
@@ -731,36 +749,33 @@ class Config {
     await chmod(conf.source, mode)
   }
 
-  clearCredentialsByURI (uri) {
+  clearCredentialsByURI (uri, level = 'user') {
     const nerfed = nerfDart(uri)
     const def = nerfDart(this.get('registry'))
     if (def === nerfed) {
-      this.delete(`-authtoken`, 'user')
-      this.delete(`_authToken`, 'user')
-      this.delete(`_authtoken`, 'user')
-      this.delete(`_auth`, 'user')
-      this.delete(`_password`, 'user')
-      this.delete(`username`, 'user')
+      this.delete(`-authtoken`, level)
+      this.delete(`_authToken`, level)
+      this.delete(`_authtoken`, level)
+      this.delete(`_auth`, level)
+      this.delete(`_password`, level)
+      this.delete(`username`, level)
       // de-nerf email if it's nerfed to the default registry
-      const email = this.get(`${nerfed}:email`, 'user')
+      const email = this.get(`${nerfed}:email`, level)
       if (email) {
-        this.set('email', email, 'user')
+        this.set('email', email, level)
       }
     }
-    this.delete(`${nerfed}:_authToken`, 'user')
-    this.delete(`${nerfed}:_auth`, 'user')
-    this.delete(`${nerfed}:_password`, 'user')
-    this.delete(`${nerfed}:username`, 'user')
-    this.delete(`${nerfed}:email`, 'user')
-    this.delete(`${nerfed}:certfile`, 'user')
-    this.delete(`${nerfed}:keyfile`, 'user')
+    this.delete(`${nerfed}:_authToken`, level)
+    this.delete(`${nerfed}:_auth`, level)
+    this.delete(`${nerfed}:_password`, level)
+    this.delete(`${nerfed}:username`, level)
+    this.delete(`${nerfed}:email`, level)
+    this.delete(`${nerfed}:certfile`, level)
+    this.delete(`${nerfed}:keyfile`, level)
   }
 
-  setCredentialsByURI (uri, { token, username, password, email, certfile, keyfile }) {
+  setCredentialsByURI (uri, { token, username, password, certfile, keyfile }) {
     const nerfed = nerfDart(uri)
-
-    // email is either provided, a top level key, or nothing
-    email = email || this.get('email', 'user')
 
     // field that hasn't been used as documented for a LONG time,
     // and as of npm 7.10.0, isn't used at all.  We just always
@@ -858,22 +873,21 @@ class Config {
   }
 }
 
-const _data = Symbol('data')
-const _raw = Symbol('raw')
 const _loadError = Symbol('loadError')
-const _source = Symbol('source')
 const _valid = Symbol('valid')
+
 class ConfigData {
+  #data
+  #source = null
+  #raw = null
   constructor (parent) {
-    this[_data] = Object.create(parent && parent.data)
-    this[_source] = null
-    this[_loadError] = null
-    this[_raw] = null
+    this.#data = Object.create(parent && parent.data)
+    this.#raw = {}
     this[_valid] = true
   }
 
   get data () {
-    return this[_data]
+    return this.#data
   }
 
   get valid () {
@@ -881,18 +895,18 @@ class ConfigData {
   }
 
   set source (s) {
-    if (this[_source]) {
+    if (this.#source) {
       throw new Error('cannot set ConfigData source more than once')
     }
-    this[_source] = s
+    this.#source = s
   }
 
   get source () {
-    return this[_source]
+    return this.#source
   }
 
   set loadError (e) {
-    if (this[_loadError] || this[_raw]) {
+    if (this[_loadError] || (Object.keys(this.#raw).length)) {
       throw new Error('cannot set ConfigData loadError after load')
     }
     this[_loadError] = e
@@ -903,14 +917,14 @@ class ConfigData {
   }
 
   set raw (r) {
-    if (this[_raw] || this[_loadError]) {
+    if (Object.keys(this.#raw).length || this[_loadError]) {
       throw new Error('cannot set ConfigData raw after load')
     }
-    this[_raw] = r
+    this.#raw = r
   }
 
   get raw () {
-    return this[_raw]
+    return this.#raw
   }
 }
 

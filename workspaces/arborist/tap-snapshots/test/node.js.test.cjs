@@ -7,12 +7,12 @@
 'use strict'
 exports[`test/node.js TAP basic instantiation > just a lone root node 1`] = `
 &ref_1 Node {
-  "children": Map {},
+  "children": CIMap {},
   "dev": true,
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {},
+  "edgesOut": CIMap {},
   "errors": Array [],
   "extraneous": true,
   "fsChildren": Set {},
@@ -22,6 +22,7 @@ exports[`test/node.js TAP basic instantiation > just a lone root node 1`] = `
   "inventory": Inventory {
     "" => <*ref_1>,
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -191,7 +192,7 @@ target:{location:'c'}}}}
 
 exports[`test/node.js TAP set workspaces > should setup edges out for each workspace 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "foo" => Link {
       "dev": true,
       "devOptional": true,
@@ -201,7 +202,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -209,6 +210,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/foo",
@@ -226,7 +229,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -234,6 +237,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/unknown",
@@ -251,7 +256,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "foo" => Edge {
       "peerConflicted": false,
     },
@@ -263,12 +268,12 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
   "extraneous": true,
   "fsChildren": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -276,6 +281,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -287,7 +293,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -295,6 +301,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/foo",
@@ -320,12 +328,12 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "tops": Set {},
     },
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -333,6 +341,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -340,7 +349,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -348,6 +357,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/unknown",
@@ -387,7 +398,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -395,6 +406,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/foo",
@@ -408,12 +421,12 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "tops": Set {},
     },
     "foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -421,6 +434,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -432,7 +446,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -440,6 +454,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/foo",
@@ -469,7 +485,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -477,6 +493,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/unknown",
@@ -490,12 +508,12 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "tops": Set {},
     },
     "unknown" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -503,6 +521,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -510,7 +529,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -518,6 +537,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/unknown",
@@ -543,6 +564,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -556,12 +578,12 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -569,6 +591,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -580,7 +603,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -588,6 +611,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/foo",
@@ -613,12 +638,12 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "tops": Set {},
     },
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -626,6 +651,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -633,7 +659,7 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -641,6 +667,8 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/unknown",
@@ -671,17 +699,17 @@ exports[`test/node.js TAP set workspaces > should setup edges out for each works
 
 exports[`test/node.js TAP testing with dep tree with meta > add new meta under prod 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {
+          "children": CIMap {
             "metameta" => Link {
               "dev": true,
               "devOptional": true,
               "dummy": false,
               "edgesIn": Set {},
-              "edgesOut": Map {},
+              "edgesOut": CIMap {},
               "errors": Array [],
               "extraneous": true,
               "fsChildren": Set {},
@@ -689,6 +717,8 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
               "installLinks": false,
               "integrity": "metameta",
               "inventory": Inventory {},
+              "isInStore": false,
+              "isStoreLink": false,
               "legacyPeerDeps": false,
               "linksIn": Set {},
               "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -713,7 +743,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "asdf" => Edge {
               "peerConflicted": false,
             },
@@ -725,6 +755,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "installLinks": false,
           "integrity": "newMeta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -747,7 +778,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -759,12 +790,12 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -776,6 +807,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -794,6 +826,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -808,7 +841,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -820,7 +853,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -832,6 +865,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -846,7 +880,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -855,7 +889,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -863,6 +897,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -877,7 +912,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -886,7 +921,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -894,6 +929,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -908,7 +944,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -917,7 +953,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -925,6 +961,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -939,12 +976,12 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -952,6 +989,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -966,7 +1004,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -975,7 +1013,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -987,6 +1025,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -994,7 +1033,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -1002,6 +1041,8 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -1031,7 +1072,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -1063,15 +1104,15 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {
+          "children": CIMap {
             "metameta" => Link {
               "dev": true,
               "devOptional": true,
               "dummy": false,
               "edgesIn": Set {},
-              "edgesOut": Map {},
+              "edgesOut": CIMap {},
               "errors": Array [],
               "extraneous": true,
               "fsChildren": Set {},
@@ -1079,6 +1120,8 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
               "installLinks": false,
               "integrity": "metameta",
               "inventory": Inventory {},
+              "isInStore": false,
+              "isStoreLink": false,
               "legacyPeerDeps": false,
               "linksIn": Set {},
               "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -1103,7 +1146,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "asdf" => Edge {
               "peerConflicted": false,
             },
@@ -1115,6 +1158,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "installLinks": false,
           "integrity": "newMeta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -1137,7 +1181,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -1149,12 +1193,12 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -1166,6 +1210,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -1184,6 +1229,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -1198,12 +1244,12 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -1215,6 +1261,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -1229,7 +1276,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1241,7 +1288,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -1253,6 +1300,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -1267,7 +1315,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1276,7 +1324,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1284,6 +1332,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -1298,7 +1347,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1307,7 +1356,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1315,6 +1364,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -1329,7 +1379,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1338,7 +1388,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1346,6 +1396,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -1360,12 +1411,12 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1373,6 +1424,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -1387,7 +1439,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1396,7 +1448,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -1408,6 +1460,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -1415,7 +1468,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -1423,6 +1476,8 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -1448,13 +1503,13 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
     "node_modules/prod/node_modules/meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -1462,6 +1517,8 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -1486,7 +1543,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -1498,6 +1555,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/node_modules/meta",
@@ -1516,7 +1574,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1524,6 +1582,8 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": "metameta",
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -1537,6 +1597,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -1550,12 +1611,12 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -1567,6 +1628,7 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -1586,11 +1648,11 @@ exports[`test/node.js TAP testing with dep tree with meta > add new meta under p
 
 exports[`test/node.js TAP testing with dep tree with meta > initial load with some deps 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
@@ -1602,7 +1664,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "bundled" => Edge {
               "peerConflicted": false,
             },
@@ -1614,6 +1676,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "installLinks": false,
           "integrity": "meta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -1636,7 +1699,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -1648,12 +1711,12 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -1665,6 +1728,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -1683,6 +1747,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -1697,7 +1762,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1709,7 +1774,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -1721,6 +1786,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -1735,7 +1801,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1744,7 +1810,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1752,6 +1818,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -1766,7 +1833,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1775,7 +1842,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1783,6 +1850,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -1797,7 +1865,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -1806,7 +1874,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1814,6 +1882,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -1828,12 +1897,12 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -1841,6 +1910,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -1859,7 +1929,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -1891,9 +1961,9 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
@@ -1905,7 +1975,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "bundled" => Edge {
               "peerConflicted": false,
             },
@@ -1917,6 +1987,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "installLinks": false,
           "integrity": "meta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -1939,7 +2010,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -1951,12 +2022,12 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -1968,6 +2039,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -1986,6 +2058,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -2000,12 +2073,12 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -2017,6 +2090,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -2031,7 +2105,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "node_modules/prod/node_modules/meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2043,7 +2117,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -2055,6 +2129,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/node_modules/meta",
@@ -2069,7 +2144,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2081,7 +2156,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -2093,6 +2168,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -2107,7 +2183,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2116,7 +2192,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2124,6 +2200,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -2138,7 +2215,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2147,7 +2224,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2155,6 +2232,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -2169,7 +2247,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2178,7 +2256,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2186,6 +2264,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -2200,12 +2279,12 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2213,6 +2292,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -2227,6 +2307,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -2240,12 +2321,12 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -2257,6 +2338,7 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -2276,9 +2358,9 @@ exports[`test/node.js TAP testing with dep tree with meta > initial load with so
 
 exports[`test/node.js TAP testing with dep tree with meta > move meta to top level, update stuff 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2287,7 +2369,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -2299,12 +2381,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -2316,6 +2398,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -2334,6 +2417,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -2348,7 +2432,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2360,7 +2444,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -2372,6 +2456,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -2386,7 +2471,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2395,7 +2480,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2403,6 +2488,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -2417,7 +2503,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2426,7 +2512,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2434,6 +2520,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -2448,7 +2535,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2457,7 +2544,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2465,6 +2552,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -2479,12 +2567,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2492,6 +2580,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -2506,7 +2595,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2521,7 +2610,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -2533,6 +2622,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta",
@@ -2551,7 +2641,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -2583,7 +2673,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2592,7 +2682,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -2604,12 +2694,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -2621,6 +2711,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -2639,6 +2730,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -2653,12 +2745,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -2670,6 +2762,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -2684,7 +2777,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2696,7 +2789,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -2708,6 +2801,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -2722,7 +2816,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2731,7 +2825,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2739,6 +2833,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -2753,7 +2848,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2762,7 +2857,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2770,6 +2865,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -2784,7 +2880,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2793,7 +2889,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2801,6 +2897,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -2815,12 +2912,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -2828,6 +2925,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -2842,7 +2940,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2857,7 +2955,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -2869,6 +2967,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta",
@@ -2883,6 +2982,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -2896,12 +2996,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -2913,6 +3013,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -2932,9 +3033,9 @@ exports[`test/node.js TAP testing with dep tree with meta > move meta to top lev
 
 exports[`test/node.js TAP testing with dep tree with meta > move new meta to top level 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -2943,7 +3044,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -2955,12 +3056,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -2972,6 +3073,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -2990,6 +3092,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -3004,7 +3107,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3013,7 +3116,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -3025,6 +3128,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -3039,7 +3143,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3048,7 +3152,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3056,6 +3160,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -3070,7 +3175,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3079,7 +3184,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3087,6 +3192,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -3101,7 +3207,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3110,7 +3216,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3118,6 +3224,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -3132,12 +3239,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3145,6 +3252,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -3159,13 +3267,13 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -3173,6 +3281,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -3200,7 +3310,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -3212,6 +3322,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -3219,7 +3330,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -3227,6 +3338,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -3256,7 +3369,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -3288,7 +3401,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3297,7 +3410,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -3309,12 +3422,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -3326,6 +3439,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -3344,6 +3458,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -3358,12 +3473,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -3375,6 +3490,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -3389,7 +3505,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3398,7 +3514,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -3410,6 +3526,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -3424,7 +3541,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3433,7 +3550,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3441,6 +3558,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -3455,7 +3573,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3464,7 +3582,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3472,6 +3590,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -3486,7 +3605,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3495,7 +3614,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3503,6 +3622,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -3517,12 +3637,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3530,6 +3650,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -3548,7 +3669,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3556,6 +3677,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "metameta",
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta/node_modules/metameta",
@@ -3569,13 +3692,13 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -3583,6 +3706,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -3610,7 +3735,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -3622,6 +3747,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -3629,7 +3755,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -3637,6 +3763,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -3662,6 +3790,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -3675,12 +3804,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -3692,6 +3821,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -3711,9 +3841,9 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
 
 exports[`test/node.js TAP testing with dep tree with meta > move new meta to top level second time (no-op) 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3722,7 +3852,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -3734,12 +3864,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -3751,6 +3881,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -3769,6 +3900,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -3783,7 +3915,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3792,7 +3924,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -3804,6 +3936,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -3818,7 +3951,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3827,7 +3960,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3835,6 +3968,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -3849,7 +3983,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3858,7 +3992,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3866,6 +4000,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -3880,7 +4015,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -3889,7 +4024,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3897,6 +4032,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -3911,12 +4047,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -3924,6 +4060,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -3938,13 +4075,13 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -3952,6 +4089,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -3979,7 +4118,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -3991,6 +4130,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -3998,7 +4138,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -4006,6 +4146,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -4035,7 +4177,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -4067,7 +4209,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4076,7 +4218,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -4088,12 +4230,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -4105,6 +4247,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -4123,6 +4266,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -4137,12 +4281,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -4154,6 +4298,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -4168,7 +4313,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4177,7 +4322,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -4189,6 +4334,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -4203,7 +4349,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4212,7 +4358,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4220,6 +4366,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -4234,7 +4381,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4243,7 +4390,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4251,6 +4398,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -4265,7 +4413,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4274,7 +4422,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4282,6 +4430,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -4296,12 +4445,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4309,6 +4458,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -4327,7 +4477,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4335,6 +4485,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "metameta",
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta/node_modules/metameta",
@@ -4348,13 +4500,13 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -4362,6 +4514,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -4389,7 +4543,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -4401,6 +4555,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -4408,7 +4563,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -4416,6 +4571,8 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -4441,6 +4598,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -4454,12 +4612,12 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -4471,6 +4629,7 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -4490,17 +4649,17 @@ exports[`test/node.js TAP testing with dep tree with meta > move new meta to top
 
 exports[`test/node.js TAP testing with dep tree without meta > add new meta under prod 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {
+          "children": CIMap {
             "metameta" => Link {
               "dev": true,
               "devOptional": true,
               "dummy": false,
               "edgesIn": Set {},
-              "edgesOut": Map {},
+              "edgesOut": CIMap {},
               "errors": Array [],
               "extraneous": true,
               "fsChildren": Set {},
@@ -4508,6 +4667,8 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
               "installLinks": false,
               "integrity": "metameta",
               "inventory": Inventory {},
+              "isInStore": false,
+              "isStoreLink": false,
               "legacyPeerDeps": false,
               "linksIn": Set {},
               "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -4532,7 +4693,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "asdf" => Edge {
               "peerConflicted": false,
             },
@@ -4544,6 +4705,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "installLinks": false,
           "integrity": "newMeta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -4566,7 +4728,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -4578,12 +4740,12 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -4595,6 +4757,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -4613,6 +4776,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -4627,7 +4791,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4639,7 +4803,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -4651,6 +4815,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -4665,7 +4830,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4674,7 +4839,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4682,6 +4847,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -4696,7 +4862,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4705,7 +4871,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4713,6 +4879,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -4727,7 +4894,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4736,7 +4903,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4744,6 +4911,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -4758,12 +4926,12 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -4771,6 +4939,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -4785,7 +4954,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -4794,7 +4963,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -4806,6 +4975,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -4813,7 +4983,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -4821,6 +4991,8 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -4850,7 +5022,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -4882,15 +5054,15 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {
+          "children": CIMap {
             "metameta" => Link {
               "dev": true,
               "devOptional": true,
               "dummy": false,
               "edgesIn": Set {},
-              "edgesOut": Map {},
+              "edgesOut": CIMap {},
               "errors": Array [],
               "extraneous": true,
               "fsChildren": Set {},
@@ -4898,6 +5070,8 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
               "installLinks": false,
               "integrity": "metameta",
               "inventory": Inventory {},
+              "isInStore": false,
+              "isStoreLink": false,
               "legacyPeerDeps": false,
               "linksIn": Set {},
               "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -4922,7 +5096,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "asdf" => Edge {
               "peerConflicted": false,
             },
@@ -4934,6 +5108,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "installLinks": false,
           "integrity": "newMeta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -4956,7 +5131,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -4968,12 +5143,12 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -4985,6 +5160,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -5003,6 +5179,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -5017,12 +5194,12 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -5034,6 +5211,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -5048,7 +5226,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5060,7 +5238,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -5072,6 +5250,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -5086,7 +5265,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5095,7 +5274,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5103,6 +5282,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -5117,7 +5297,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5126,7 +5306,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5134,6 +5314,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -5148,7 +5329,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5157,7 +5338,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5165,6 +5346,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -5179,12 +5361,12 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5192,6 +5374,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -5206,7 +5389,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5215,7 +5398,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -5227,6 +5410,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -5234,7 +5418,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -5242,6 +5426,8 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -5267,13 +5453,13 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
     "node_modules/prod/node_modules/meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -5281,6 +5467,8 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -5305,7 +5493,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -5317,6 +5505,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/node_modules/meta",
@@ -5335,7 +5524,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5343,6 +5532,8 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": "metameta",
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/node_modules/meta/node_modules/metameta",
@@ -5356,6 +5547,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -5369,12 +5561,12 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -5386,6 +5578,7 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -5405,11 +5598,11 @@ exports[`test/node.js TAP testing with dep tree without meta > add new meta unde
 
 exports[`test/node.js TAP testing with dep tree without meta > initial load with some deps 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
@@ -5421,7 +5614,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "bundled" => Edge {
               "peerConflicted": false,
             },
@@ -5433,6 +5626,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "installLinks": false,
           "integrity": "meta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -5455,7 +5649,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -5467,12 +5661,12 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -5484,6 +5678,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -5502,6 +5697,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -5516,7 +5712,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5528,7 +5724,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -5540,6 +5736,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -5554,7 +5751,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5563,7 +5760,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5571,6 +5768,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -5585,7 +5783,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5594,7 +5792,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5602,6 +5800,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -5616,7 +5815,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5625,7 +5824,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5633,6 +5832,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -5647,12 +5847,12 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5660,6 +5860,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -5678,7 +5879,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -5710,9 +5911,9 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {
+      "children": CIMap {
         "meta" => Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
@@ -5724,7 +5925,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
               "peerConflicted": false,
             },
           },
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "bundled" => Edge {
               "peerConflicted": false,
             },
@@ -5736,6 +5937,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "installLinks": false,
           "integrity": "meta",
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/node_modules/meta",
@@ -5758,7 +5960,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -5770,12 +5972,12 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -5787,6 +5989,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -5805,6 +6008,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -5819,12 +6023,12 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -5836,6 +6040,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -5850,7 +6055,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "node_modules/prod/node_modules/meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5862,7 +6067,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -5874,6 +6079,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/node_modules/meta",
@@ -5888,7 +6094,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5900,7 +6106,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -5912,6 +6118,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -5926,7 +6133,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5935,7 +6142,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5943,6 +6150,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -5957,7 +6165,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5966,7 +6174,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -5974,6 +6182,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -5988,7 +6197,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -5997,7 +6206,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6005,6 +6214,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -6019,12 +6229,12 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6032,6 +6242,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -6046,6 +6257,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -6059,12 +6271,12 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -6076,6 +6288,7 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -6095,9 +6308,9 @@ exports[`test/node.js TAP testing with dep tree without meta > initial load with
 
 exports[`test/node.js TAP testing with dep tree without meta > move meta to top level, update stuff 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6106,7 +6319,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -6118,12 +6331,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -6135,6 +6348,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -6153,6 +6367,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -6167,7 +6382,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6179,7 +6394,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -6191,6 +6406,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -6205,7 +6421,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6214,7 +6430,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6222,6 +6438,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -6236,7 +6453,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6245,7 +6462,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6253,6 +6470,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -6267,7 +6485,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6276,7 +6494,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6284,6 +6502,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -6298,12 +6517,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6311,6 +6530,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -6325,7 +6545,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6340,7 +6560,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -6352,6 +6572,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta",
@@ -6370,7 +6591,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -6402,7 +6623,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6411,7 +6632,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -6423,12 +6644,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -6440,6 +6661,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -6458,6 +6680,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -6472,12 +6695,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -6489,6 +6712,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -6503,7 +6727,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6515,7 +6739,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -6527,6 +6751,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -6541,7 +6766,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6550,7 +6775,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6558,6 +6783,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -6572,7 +6798,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6581,7 +6807,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6589,6 +6815,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -6603,7 +6830,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6612,7 +6839,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6620,6 +6847,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -6634,12 +6862,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6647,6 +6875,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -6661,7 +6890,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6676,7 +6905,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "bundled" => Edge {
           "peerConflicted": false,
         },
@@ -6688,6 +6917,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": "meta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta",
@@ -6702,6 +6932,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -6715,12 +6946,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -6732,6 +6963,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -6751,9 +6983,9 @@ exports[`test/node.js TAP testing with dep tree without meta > move meta to top 
 
 exports[`test/node.js TAP testing with dep tree without meta > move new meta to top level 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6762,7 +6994,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -6774,12 +7006,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -6791,6 +7023,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -6809,6 +7042,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -6823,7 +7057,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6832,7 +7066,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -6844,6 +7078,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -6858,7 +7093,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6867,7 +7102,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6875,6 +7110,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -6889,7 +7125,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6898,7 +7134,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6906,6 +7142,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -6920,7 +7157,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -6929,7 +7166,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6937,6 +7174,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -6951,12 +7189,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -6964,6 +7202,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -6978,13 +7217,13 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -6992,6 +7231,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -7019,7 +7260,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -7031,6 +7272,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -7038,7 +7280,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -7046,6 +7288,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -7075,7 +7319,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -7107,7 +7351,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7116,7 +7360,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -7128,12 +7372,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -7145,6 +7389,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -7163,6 +7408,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -7177,12 +7423,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -7194,6 +7440,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -7208,7 +7455,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7217,7 +7464,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -7229,6 +7476,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -7243,7 +7491,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7252,7 +7500,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7260,6 +7508,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -7274,7 +7523,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7283,7 +7532,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7291,6 +7540,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -7305,7 +7555,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7314,7 +7564,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7322,6 +7572,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -7336,12 +7587,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7349,6 +7600,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -7367,7 +7619,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7375,6 +7627,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "metameta",
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta/node_modules/metameta",
@@ -7388,13 +7642,13 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -7402,6 +7656,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -7429,7 +7685,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -7441,6 +7697,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -7448,7 +7705,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -7456,6 +7713,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -7481,6 +7740,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -7494,12 +7754,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -7511,6 +7771,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -7530,9 +7791,9 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
 
 exports[`test/node.js TAP testing with dep tree without meta > move new meta to top level second time (no-op) 1`] = `
 &ref_1 Node {
-  "children": Map {
+  "children": CIMap {
     "prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7541,7 +7802,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -7553,12 +7814,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -7570,6 +7831,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -7588,6 +7850,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -7602,7 +7865,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7611,7 +7874,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -7623,6 +7886,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -7637,7 +7901,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7646,7 +7910,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7654,6 +7918,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -7668,7 +7933,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7677,7 +7942,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7685,6 +7950,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -7699,7 +7965,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7708,7 +7974,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7716,6 +7982,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -7730,12 +7997,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -7743,6 +8010,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -7757,13 +8025,13 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -7771,6 +8039,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -7798,7 +8068,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -7810,6 +8080,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -7817,7 +8088,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -7825,6 +8096,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -7854,7 +8127,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
   "devOptional": true,
   "dummy": false,
   "edgesIn": Set {},
-  "edgesOut": Map {
+  "edgesOut": CIMap {
     "prod" => Edge {
       "peerConflicted": false,
     },
@@ -7886,7 +8159,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
   "inventory": Inventory {
     "" => <*ref_1>,
     "node_modules/prod" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7895,7 +8168,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "peer" => Edge {
           "peerConflicted": false,
         },
@@ -7907,12 +8180,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "extraneous": true,
       "fsChildren": Set {
         Node {
-          "children": Map {},
+          "children": CIMap {},
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {
+          "edgesOut": CIMap {
             "meta" => Edge {
               "peerConflicted": false,
             },
@@ -7924,6 +8197,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": null,
           "inventory": Inventory {},
+          "isInStore": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/prod/foo",
@@ -7942,6 +8216,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "prod",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod",
@@ -7956,12 +8231,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/prod/foo" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -7973,6 +8248,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",
@@ -7987,7 +8263,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/bundled" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -7996,7 +8272,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -8008,6 +8284,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "bundled",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/bundled",
@@ -8022,7 +8299,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/dev" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -8031,7 +8308,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -8039,6 +8316,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "dev",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/dev",
@@ -8053,7 +8331,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/optional" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -8062,7 +8340,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -8070,6 +8348,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "opt",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/optional",
@@ -8084,7 +8363,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/peer" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
@@ -8093,7 +8372,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -8101,6 +8380,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "peer",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/peer",
@@ -8115,12 +8395,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/extraneous" => Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -8128,6 +8408,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "extraneous",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/extraneous",
@@ -8146,7 +8427,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {},
+      "edgesOut": CIMap {},
       "errors": Array [],
       "extraneous": true,
       "fsChildren": Set {},
@@ -8154,6 +8435,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "metameta",
       "inventory": Inventory {},
+      "isInStore": false,
+      "isStoreLink": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/meta/node_modules/metameta",
@@ -8167,13 +8450,13 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
     "node_modules/meta" => Node {
-      "children": Map {
+      "children": CIMap {
         "metameta" => Link {
           "dev": true,
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -8181,6 +8464,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -8208,7 +8493,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "peerConflicted": false,
         },
       },
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "asdf" => Edge {
           "peerConflicted": false,
         },
@@ -8220,6 +8505,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": "newMeta",
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {
         Link {
@@ -8227,7 +8513,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "devOptional": true,
           "dummy": false,
           "edgesIn": Set {},
-          "edgesOut": Map {},
+          "edgesOut": CIMap {},
           "errors": Array [],
           "extraneous": true,
           "fsChildren": Set {},
@@ -8235,6 +8521,8 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
           "installLinks": false,
           "integrity": "metameta",
           "inventory": Inventory {},
+          "isInStore": false,
+          "isStoreLink": false,
           "legacyPeerDeps": false,
           "linksIn": Set {},
           "location": "node_modules/meta/node_modules/metameta",
@@ -8260,6 +8548,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "tops": Set {},
     },
   },
+  "isInStore": false,
   "legacyPeerDeps": false,
   "linksIn": Set {},
   "location": "",
@@ -8273,12 +8562,12 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
   "sourceReference": null,
   "tops": Set {
     Node {
-      "children": Map {},
+      "children": CIMap {},
       "dev": true,
       "devOptional": true,
       "dummy": false,
       "edgesIn": Set {},
-      "edgesOut": Map {
+      "edgesOut": CIMap {
         "meta" => Edge {
           "peerConflicted": false,
         },
@@ -8290,6 +8579,7 @@ exports[`test/node.js TAP testing with dep tree without meta > move new meta to 
       "installLinks": false,
       "integrity": null,
       "inventory": Inventory {},
+      "isInStore": false,
       "legacyPeerDeps": false,
       "linksIn": Set {},
       "location": "node_modules/prod/foo",

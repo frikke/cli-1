@@ -9,6 +9,10 @@ on:
         description: "The npm spec to create the PR from"
         required: true
         default: 'latest'
+      branch:
+        description: "The major node version to serve as the base of the PR. Should be `main` or a number like `18`, `19`, etc."
+        required: true
+        default: 'main'
       dryRun:
         description: "Setting this to anything will run all the steps except opening the PR"
 
@@ -22,18 +26,24 @@ jobs:
         shell: bash
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Git User
         run: |
           git config --global user.email "npm-cli+bot@github.com"
           git config --global user.name "npm CLI robot"
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        id: node
         with:
-          node-version: 18.x
+          node-version: 22.x
+          check-latest: contains('22.x', '.x')
           cache: npm
+      - name: Check Git Status
+        run: node scripts/git-dirty.js
       - name: Reset Deps
-        run: node . run resetdeps
+        run: node scripts/resetdeps.js
       - name: Checkout Node
         uses: actions/checkout@v3
         with:
@@ -46,4 +56,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.NODE_PULL_REQUEST_TOKEN }}
         run: |
           DRY_RUN=$([ -z "${{ inputs.dryRun }}" ] && echo "" || echo "--dry-run")
-          node scripts/create-node-pr.js "${{ inputs.spec }}" "$DRY_RUN"
+          node scripts/create-node-pr.js ${{ inputs.spec }} ${{ inputs.branch }} "$DRY_RUN"

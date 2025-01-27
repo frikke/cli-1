@@ -2,13 +2,13 @@ const relpath = require('./relpath.js')
 const Node = require('./node.js')
 const _loadDeps = Symbol.for('Arborist.Node._loadDeps')
 const _target = Symbol.for('_target')
-const { dirname } = require('path')
+const { dirname } = require('node:path')
 // defined by Node class
 const _delistFromMeta = Symbol.for('_delistFromMeta')
 const _refreshLocation = Symbol.for('_refreshLocation')
 class Link extends Node {
   constructor (options) {
-    const { root, realpath, target, parent, fsParent } = options
+    const { root, realpath, target, parent, fsParent, isStoreLink } = options
 
     if (!realpath && !(target && target.path)) {
       throw new TypeError('must provide realpath for Link node')
@@ -22,6 +22,8 @@ class Link extends Node {
       : target ? target.root
       : null),
     })
+
+    this.isStoreLink = isStoreLink || false
 
     if (target) {
       this.target = target
